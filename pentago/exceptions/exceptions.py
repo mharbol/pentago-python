@@ -1,11 +1,11 @@
 
 class OutOfBoundsException(Exception):
-    def __init__(self, x_pos : int, y_pos : int):
-        super(f"The position (${x_pos}, ${y_pos}) is out of bounds for the board.")
+    def __init__(self, row_number : int, col_number : int):
+        super(f"The position (${row_number}, ${col_number}) is out of bounds for the board.")
 
 class InvalidPlacementException(Exception):
-    def __init__(self, x_pos : int, y_pos : int, player_number : int):
-        super(f"Position (${x_pos}, ${y_pos}) is already occupied by player ${player_number}.")
+    def __init__(self, rown_number : int, col_number : int, player_number : int):
+        super(f"Position (${rown_number}, ${col_number}) is already occupied by player ${player_number}.")
 
 class InvalidQuadrantException(Exception):
     def __init__(self, quadrant : int):

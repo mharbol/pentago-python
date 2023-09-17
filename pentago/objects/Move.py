@@ -5,8 +5,8 @@ class Direction(Enum):
     COUNTERCLOCKWISE = 2
 
 class Move:
-    def __init__(self, x_position : int, y_position : int, quadrant : int, direction : Direction) -> None:
-        self.x_position = x_position
-        self.y_position = y_position
+    def __init__(self, row_number : int, col_number : int, quadrant : int, direction : Direction) -> None:
+        self.row_number = row_number
+        self.col_number = col_number
         self.quadrant = quadrant
         self.direction = direction

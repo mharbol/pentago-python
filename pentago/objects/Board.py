@@ -1,7 +1,7 @@
 
 from __future__ import annotations
 
-from pentago.objects.Move import Move
+from pentago.objects.Move import Move, Direction
 from pentago.objects.Status import GameStatus
 
 class Board:
@@ -19,9 +19,9 @@ class Board:
         if type(o) != type(self):
             return False
 
-        for x in range(len(self.board_array)):
-            for y in range(len(self.board_array)):
-                if self.board_array[x][y] != o.board_array[x][y]:
+        for row in range(len(self.board_array)):
+            for col in range(len(self.board_array)):
+                if self.board_array[row][col] != o.board_array[row][col]:
                     return False
         return True
 
@@ -43,8 +43,8 @@ class Board:
     def clone(self) -> Board:
         pass
 
-    def place_token(self, x_position : int, y_position : int, value : int) -> None:
+    def place_token(self, row_number : int, col_number : int, value : int) -> None:
         pass
 
-    def rotate_quadrant(self, quadrant : int, direction) -> None:
+    def rotate_quadrant(self, quadrant : int, direction : Direction) -> None:
         pass

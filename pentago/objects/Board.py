@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from pentago.objects.Move import Move, Direction
-from pentago.objects.Status import GameStatus
+from pentago.gameplay.Status import GameStatus
 
 class Board:
 
@@ -43,8 +43,8 @@ class Board:
     def clone(self) -> Board:
         pass
 
-    def place_token(self, row_number : int, col_number : int, value : int) -> None:
+    def place_token(self, row_number : int, col_number : int, value : int) -> Board:
         pass
 
-    def rotate_quadrant(self, quadrant : int, direction : Direction) -> None:
+    def rotate_quadrant(self, quadrant : int, direction : Direction) -> Board:
         pass

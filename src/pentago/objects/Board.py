@@ -1,5 +1,5 @@
 
-from __future__ import annotations
+from __future__ import annotations as __
 
 from pentago.objects.Move import Move, Direction
 from pentago.gameplay.Status import GameStatus

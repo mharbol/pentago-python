@@ -1,8 +1,8 @@
 
 from __future__ import annotations as __
 
-from pentago.objects.Move import Move, Direction
-from pentago.gameplay.Status import GameStatus
+from pentago.objects.move import Move, Direction
+from pentago.gameplay.status import GameStatus
 
 class Board:
 

@@ -1,6 +1,6 @@
 
-__QUAD_MIN = 1
-__QUAD_MAX = 4
+QUAD_MIN = 1
+QUAD_MAX = 4
 
 class OutOfBoundsException(Exception):
     def __init__(self, row_number : int, col_number : int):
@@ -12,7 +12,7 @@ class InvalidPlacementException(Exception):
 
 class InvalidQuadrantException(Exception):
     def __init__(self, quadrant : int):
-        super(f"Expected quadrant to be between ${__QUAD_MIN} and ${__QUAD_MAX}, recieved ${quadrant}.")
+        super(f"Expected quadrant to be between ${QUAD_MIN} and ${QUAD_MAX}, recieved ${quadrant}.")
 
 class InvalidArgumentException(Exception):
     def __init__(self, expected_type : type, actual_type : type):

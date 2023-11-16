@@ -1,5 +1,11 @@
 from __future__ import annotations as __
 from enum import Enum
+from pentago.exceptions import OutOfBoundsException, InvalidQuadrantException
+
+GRID_MIN : int = 0
+GRID_MAX : int = 5
+QUAD_MIN : int = 1
+QUAD_MAX : int = 4
 
 class Direction(Enum):
     CLOCKWISE = 0
@@ -13,19 +19,14 @@ class Direction(Enum):
 
 class Move:
     def __init__(self, row_number : int, col_number : int, quadrant : int, direction : Direction) -> None:
-        # TODO out of bounds checks
+        if row_number > GRID_MAX or col_number > GRID_MAX or row_number < GRID_MIN or col_number < GRID_MIN:
+            raise OutOfBoundsException(row_number, col_number)
+        if quadrant > QUAD_MAX or quadrant < QUAD_MIN:
+            raise InvalidQuadrantException(quadrant)
         self.row_number = row_number
         self.col_number = col_number
         self.quadrant = quadrant
         self.direction = direction
-
-    def __hash__(self) -> int:
-        """
-        Hashcode for the `Move` object. Packs values into their own unique space of bits.
-        There are 6 (rows) * 6 (columns) * 4 (quadrants) * 2 (directions) = 288 possible `Move`s.
-        Packing this into 9 bits, it is [row, col, quad, dir] with [3, 3, 2, 1] bits respectively.
-        """
-        return (self.row_number << 6) | (self.col_number << 3) | (self.quadrant << 1) | int(self.direction)
 
     def __eq__(self, o : object) -> bool:
         if type(o) != type(self):
@@ -37,14 +38,25 @@ class Move:
         return not self == o
 
     def __str__(self) -> str:
-        return f"Row: ${self.row_number}, Column: ${self.col_number}, Quadrant: ${self.quadrant}," + \
-            f"Direction: ${self.direction}"
+        return f"Row: {self.row_number}, Column: {self.col_number}, Quadrant: {self.quadrant}," + \
+            f"Direction: {self.direction}"
 
     def __repr__(self) -> str:
         return str(self)
 
     def __int__(self) -> int:
+        """
+        An `int` to represent this Move. The same as calling `hash()` on this object.
+        """
         return hash(self)
+
+    def __hash__(self) -> int:
+        """
+        Hashcode for the `Move` object. Packs values into their own unique space of bits.
+        There are 6 (rows) * 6 (columns) * 4 (quadrants) * 2 (directions) = 288 possible `Move`s.
+        Packing this into 9 bits, it is [row, col, quad, dir] with [3, 3, 2, 1] bits respectively.
+        """
+        return (self.row_number << 6) | (self.col_number << 3) | (self.quadrant << 1) | int(self.direction)
 
     @staticmethod
     def unhash(move_repr : int) -> Move:

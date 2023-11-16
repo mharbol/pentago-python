@@ -4,12 +4,15 @@ from __future__ import annotations as __
 from pentago.objects.move import Move, Direction
 from pentago.gameplay.status import GameStatus
 
+__GRID_SIZE : int = 6
+
 class Board:
 
     def __init__(self) -> None:
-        self.board_array : [[int]] = [[0] * 6] * 6
+        self.board_array : [[int]] = [[0] * __GRID_SIZE] * __GRID_SIZE
 
     def __str__(self) -> str:
+        # TODO
         pass
 
     def __repr__(self) -> str:
@@ -29,22 +32,29 @@ class Board:
         return not self == o
 
     def is_win(self, player_number : int) -> bool:
+        # TODO
         pass
 
     def is_draw(self) -> bool:
+        # TODO
         pass
 
     def check_win(self) -> GameStatus:
+        # TODO
         pass
 
     def make_move(self, move : Move) -> Board:
+        # TODO
         pass
 
     def clone(self) -> Board:
+        # TODO
         pass
 
     def place_token(self, row_number : int, col_number : int, value : int) -> Board:
+        # TODO
         pass
 
     def rotate_quadrant(self, quadrant : int, direction : Direction) -> Board:
+        # TODO
         pass

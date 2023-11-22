@@ -8,6 +8,11 @@ QUAD_MIN : int = 1
 QUAD_MAX : int = 4
 
 class Direction(Enum):
+    # TODO
+    """
+    Dir
+    """
+
     CLOCKWISE = 0
     COUNTERCLOCKWISE = 1
 
@@ -17,7 +22,18 @@ class Direction(Enum):
     def __hash__(self) -> int:
         return int(self)
 
+    def __str__(self) -> str:
+        return "CLOCKWISE" if int(self) == 0 else "COUNTERCLOCKWISE"
+
+    def __repr__(self) -> str:
+        return str(self)
+
 class Move:
+    # TODO
+    """
+    Move
+    """
+
     def __init__(self, row_number : int, col_number : int, quadrant : int, direction : Direction) -> None:
         if row_number > GRID_MAX or col_number > GRID_MAX or row_number < GRID_MIN or col_number < GRID_MIN:
             raise OutOfBoundsException(row_number, col_number)
@@ -29,7 +45,7 @@ class Move:
         self.direction = direction
 
     def __eq__(self, o : object) -> bool:
-        if type(o) != type(self):
+        if not isinstance(o, Move):
             return False
         return self.row_number == o.row_number and self.col_number == o.col_number and \
             self.quadrant == o.quadrant and self.direction == o.direction
@@ -55,11 +71,16 @@ class Move:
         Hashcode for the `Move` object. Packs values into their own unique space of bits.
         There are 6 (rows) * 6 (columns) * 4 (quadrants) * 2 (directions) = 288 possible `Move`s.
         Packing this into 9 bits, it is [row, col, quad, dir] with [3, 3, 2, 1] bits respectively.
+        This hashing method is one-to-one; it will uniquely hash any given `Move`.
         """
         return (self.row_number << 6) | (self.col_number << 3) | (self.quadrant << 1) | int(self.direction)
 
     @staticmethod
     def unhash(move_repr : int) -> Move:
+        """
+        Reverse hash for the `Move` object. Unpacks bits packaged by the `hash()` function and returns
+        the corresponding, unique `Move` object.
+        """
         row : int = move_repr >> 6
         col : int = move_repr >> 3 & 0b111
         dir : int = move_repr & 0b1

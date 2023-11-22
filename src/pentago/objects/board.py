@@ -8,7 +8,8 @@ __GRID_SIZE : int = 6
 
 class Board:
 
-    def __init__(self) -> None:
+    def __init__(self, board_array : [[int]] = None) -> None:
+        # TODO
         self.board_array : [[int]] = [[0] * __GRID_SIZE] * __GRID_SIZE
 
     def __str__(self) -> str:
@@ -19,7 +20,7 @@ class Board:
         return str(self)
 
     def __eq__(self, o : object) -> bool:
-        if type(o) != type(self):
+        if not isinstance(o, Board):
             return False
 
         for row in range(len(self.board_array)):
@@ -47,14 +48,20 @@ class Board:
         # TODO
         pass
 
-    def clone(self) -> Board:
-        # TODO
-        pass
-
     def place_token(self, row_number : int, col_number : int, value : int) -> Board:
         # TODO
         pass
 
     def rotate_quadrant(self, quadrant : int, direction : Direction) -> Board:
+        # TODO
+        pass
+
+    def clone(self) -> Board:
+        # TODO
+        pass
+
+    # Methods that might be helpful for machine learning.
+
+    def linearize(self) -> [int]:
         # TODO
         pass

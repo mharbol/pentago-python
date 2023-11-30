@@ -1,5 +1,8 @@
 
-from pentago.objects.move import QUAD_MIN, QUAD_MAX
+GRID_MIN : int = 0
+GRID_MAX : int = 5
+QUAD_MIN : int = 1
+QUAD_MAX : int = 4
 
 class OutOfBoundsException(Exception):
     def __init__(self, row_number : int, col_number : int):

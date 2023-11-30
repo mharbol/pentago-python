@@ -1,11 +1,8 @@
+
 from __future__ import annotations as __
 from enum import Enum
-from pentago.exceptions import OutOfBoundsException, InvalidQuadrantException
-
-GRID_MIN : int = 0
-GRID_MAX : int = 5
-QUAD_MIN : int = 1
-QUAD_MAX : int = 4
+from pentago.exceptions import OutOfBoundsException, InvalidQuadrantException, GRID_MIN, \
+    GRID_MAX, QUAD_MIN, QUAD_MAX
 
 class Direction(Enum):
     # TODO

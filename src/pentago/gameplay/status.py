@@ -1,5 +1,5 @@
 
-from enum import Enum
+from enum import Enum as _Enum
 
-class GameStatus(Enum):
+class GameStatus(_Enum):
     pass

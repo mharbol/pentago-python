@@ -1,10 +1,14 @@
 
 from __future__ import annotations as __
-from enum import Enum
-from pentago.exceptions import OutOfBoundsException, InvalidQuadrantException, GRID_MIN, \
-    GRID_MAX, QUAD_MIN, QUAD_MAX
+from enum import Enum as _Enum
+from pentago.exceptions import OutOfBoundsException as _OutOfBoundsException
+from pentago.exceptions import InvalidQuadrantException as _InvalidQuadrantException
+from pentago.exceptions import GRID_MIN as _GRID_MIN
+from pentago.exceptions import GRID_MAX as _GRID_MAX
+from pentago.exceptions import QUAD_MIN as _QUAD_MIN
+from pentago.exceptions import QUAD_MAX as _QUAD_MAX
 
-class Direction(Enum):
+class Direction(_Enum):
     # TODO
     """
     Dir
@@ -32,10 +36,10 @@ class Move:
     """
 
     def __init__(self, row_number : int, col_number : int, quadrant : int, direction : Direction) -> None:
-        if row_number > GRID_MAX or col_number > GRID_MAX or row_number < GRID_MIN or col_number < GRID_MIN:
-            raise OutOfBoundsException(row_number, col_number)
-        if quadrant > QUAD_MAX or quadrant < QUAD_MIN:
-            raise InvalidQuadrantException(quadrant)
+        if row_number > _GRID_MAX or col_number > _GRID_MAX or row_number < _GRID_MIN or col_number < _GRID_MIN:
+            raise _OutOfBoundsException(row_number, col_number)
+        if quadrant > _QUAD_MAX or quadrant < _QUAD_MIN:
+            raise _InvalidQuadrantException(quadrant)
         self.row_number = row_number
         self.col_number = col_number
         self.quadrant = quadrant

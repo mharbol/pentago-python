@@ -1,8 +1,9 @@
 
 from __future__ import annotations as __
 
-from pentago.objects.move import Move, Direction
-from pentago.gameplay.status import GameStatus
+from pentago.objects.move import Move as _Move
+from pentago.objects.move import Direction as _Direction
+from pentago.gameplay.status import GameStatus as _GameStatus
 
 __GRID_SIZE : int = 6
 
@@ -40,11 +41,11 @@ class Board:
         # TODO
         pass
 
-    def check_win(self) -> GameStatus:
+    def check_win(self) -> _GameStatus:
         # TODO
         pass
 
-    def make_move(self, move : Move) -> Board:
+    def make_move(self, move : _Move) -> Board:
         # TODO
         pass
 
@@ -52,7 +53,7 @@ class Board:
         # TODO
         pass
 
-    def rotate_quadrant(self, quadrant : int, direction : Direction) -> Board:
+    def rotate_quadrant(self, quadrant : int, direction : _Direction) -> Board:
         # TODO
         pass
 
